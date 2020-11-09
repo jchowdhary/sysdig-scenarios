@@ -75,7 +75,7 @@ We will create three pods (client, mysql, ping) for our workshop:
 - The `ping` pod hosts a form written in PHP, which allows authenticated users to ping a machine.
 - We will use the `client` pod to send HTTP requests to `ping`'s web server.
 
-![Topology](/sysdig/courses/falco/forensics-k8s/assets/01b_topology.png)
+![https://github.com/jchowdhary/sysdig-scenarios/blob/master/falco/forensics-k8s/assets/01b_topology.png](https://github.com/jchowdhary/sysdig-scenarios/blob/master/falco/forensics-k8s/assets/01b_topology.png)
 
 `kubectl create namespace ping
 kubectl create -f mysql-deployment.yaml --namespace=ping
